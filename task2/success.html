@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+</head>
+<body>
+
+<h1>Конверсія (success)</h1>
+
+<script>
+// Дістаємо збережені параметри
+const savedParams = localStorage.getItem("utm_params");
+
+if (savedParams) {
+
+    // Парсимо параметри
+    const urlParams = new URLSearchParams(savedParams);
+
+    // Беремо utm_source
+    const source = urlParams.get("utm_source") || "unknown";
+
+    // Формуємо postback URL
+    const postbackUrl = `https://tracker.com/postback?status=lead&source=${source}`;
+
+    // Відправляємо GET-запит
+    fetch(postbackUrl, {
+        method: "GET",
+        mode: "no-cors"
+    });
+
+    console.log("Postback:", postbackUrl);
+}
+</script>
+
+</body>
+</html>

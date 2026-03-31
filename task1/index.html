@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirect with Params</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 100px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Завдання 1</h1>
+<p>Натисни кнопку, щоб перейти з параметрами</p>
+
+<button onclick="redirectWithParams()">Перейти на offer.com</button>
+
+<script>
+function redirectWithParams() {
+    // Поточний URL
+    const currentUrl = new URL("site.com/?utm_source=facebook&utm_campaign=test&utm_content=ad1");//тут вставленно посилання з прикладу, але можна адаптувати під тей сайт з якого має бути подібний перехід
+
+    // Всі query параметри
+    const params = currentUrl.searchParams;
+
+    // Новий URL
+    const newUrl = new URL("https://offer.com");
+
+    // Копіюємо всі параметри
+    params.forEach((value, key) => {
+        newUrl.searchParams.append(key, value);
+    });
+
+    // Перехід
+    window.location.href = newUrl.toString();
+}
+</script>
+
+</body>
+</html>

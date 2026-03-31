@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Landing</title>
+</head>
+<body>
+
+<h1>Landing Page</h1>
+
+<a href="success.html">
+    <button>Перейти до success</button>
+</a>
+
+<script>
+// Зчитуємо query-параметри з URL
+const params = window.location.search;
+
+// Якщо параметри є — зберігаємо їх
+if (params && params.length > 1) {
+    localStorage.setItem("utm_params", params);
+}
+</script>
+
+</body>
+</html>
